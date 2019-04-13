@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER Marcin Sleziak <contact@imcognito.com>
 
 ENV DOCKER_VERSION=18.06.0-ce \
