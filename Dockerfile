@@ -2,10 +2,10 @@ FROM ubuntu:18.04
 MAINTAINER Marcin Sleziak <contact@imcognito.com>
 
 ENV DOCKER_VERSION=18.06.0-ce \
-    DOCKER_COMPOSE_VERSION=1.22.0 \
+    DOCKER_COMPOSE_VERSION=1.25.4 \
     COMPOSER_VERSION=1.6.5 \
-    YARN_VERSION=1.7.0 \
-    NODEJS_VERSION=8.0
+    YARN_VERSION=1.22.4 \
+    NODEJS_VERSION=12.0
 
 # Install packages
 RUN apt-get update && \
@@ -37,7 +37,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
   && /usr/local/bin/composer --version
 
 # Add nodejs repository
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
 # Add yarn repository
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
@@ -47,7 +47,6 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive \
   apt-get install -y \
-    nodejs \
     yarn \
   && apt-get clean \
 && rm -r /var/lib/apt/lists/*
